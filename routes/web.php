@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\WaliController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,9 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/sendemail', [AuthController::class, 'sendEmail'])->name('password.email');
     Route::get('/resetpassword/{token}', [AuthController::class, 'resetPassword'])->name('password.reset');
     Route::post('/updatepassword', [AuthController::class, 'updatePassword'])->name('password.update');
+
+    // Dashboard Orang Tua Murid
+    Route::get('/ortu', [WaliController::class, 'index']);
 });
 
 Route::middleware(['auth'])->group(function () {

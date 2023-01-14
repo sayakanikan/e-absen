@@ -3,12 +3,21 @@
   $(function() {
     if ($("#order-chart").length) {
       var areaData = {
-        labels: ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"],
+        labels: ["10","","","20","","","30","","","40","","", "50","","", "60","","","70"],
         datasets: [
           {
-            data: [90, 50, 100, 200, 150, 300, 50],
+            data: [200, 480, 700, 600, 620, 350, 380, 350, 850, "600", "650", "350", "590", "350", "620", "500", "990", "780", "650"],
             borderColor: [
-              '#b91c1c'
+              '#4747A1'
+            ],
+            borderWidth: 2,
+            fill: false,
+            label: "Orders"
+          },
+          {
+            data: [400, 450, 410, 500, 480, 600, 450, 550, 460, "560", "450", "700", "450", "640", "550", "650", "400", "850", "800"],
+            borderColor: [
+              '#F09397'
             ],
             borderWidth: 2,
             fill: false,
@@ -45,8 +54,9 @@
               display: true,
               autoSkip: false,
               maxRotation: 0,
-              min: 0,
-              max: 300,
+              stepSize: 200,
+              min: 200,
+              max: 1200,
               padding: 18,
               fontColor:"#6C7383"
             },
@@ -172,11 +182,16 @@
       var SalesChart = new Chart(SalesChartCanvas, {
         type: 'bar',
         data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "Mei", 'Jun'],
+          labels: ["Jan", "Feb", "Mar", "Apr", "May"],
           datasets: [{
-              label: 'Dokumen Ditambahkan',
-              data: [50, 100, 150, 200, 110, 200],
+              label: 'Offline Sales',
+              data: [480, 230, 470, 210, 330],
               backgroundColor: '#98BDFF'
+            },
+            {
+              label: 'Online Sales',
+              data: [400, 340, 550, 480, 170],
+              backgroundColor: '#4B49AC'
             }
           ]
         },
@@ -203,9 +218,9 @@
               ticks: {
                 display: true,
                 min: 0,
-                max: 200,
+                max: 560,
                 callback: function(value, index, values) {
-                  return  value ;
+                  return  value + '$' ;
                 },
                 autoSkip: true,
                 maxTicksLimit: 10,

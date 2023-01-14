@@ -24,9 +24,35 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         DB::table('users')->insert([
-            'name' => 'Windah Basudara',
-            'email' => 'wbasura@gmail.com',
-            'password' => Hash::make('password'),
+            'kelas_id'  => 1,
+            'name'      => 'Windah Basudara',
+            'nis'       => '33740112012321',
+            'email'     => 'wbasura@gmail.com',
+            'gender'    => 'L',
+            'lahir_ayah'=> '1971-01-03',
+            'lahir_ibu' => '1969-12-22',
+            'qr_code'   => 'qweioqwoiu23ihf',
+            'role_id'   => 0,
+            'password'  => Hash::make('password'),
+        ]);
+        DB::table('kelas')->insert([
+            'kelas'     => '9A',
+            'jml_siswa' => 24,
+        ]);
+        DB::table('admins')->insert([
+            'kelas_id'  => 1,
+            'name'      => 'Ilham God',
+            'nip'       => '33741002100129293',
+            'email'     => 'admin@gmail.com',
+            'password'  => Hash::make('password'),
+            'role_id'   => 1,
+        ]);
+        DB::table('super_admins')->insert([
+            'name'      => 'Ilham God',
+            'nip'       => '33741002100129293',
+            'email'     => 'super@gmail.com',
+            'password'  => Hash::make('password'),
+            'role_id'   => 2,
         ]);
     }
 }
