@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::middleware(['guest'])->group(function () {
     // Login
-    Route::get('/', [AuthController::class, 'index'])->name('login');
+    Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/authenticate', [AuthController::class, 'authenticate']);
 
     // Forget Password
@@ -27,10 +27,11 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/updatepassword', [AuthController::class, 'updatePassword'])->name('password.update');
 
     // Dashboard Orang Tua Murid
-    Route::get('/ortu', [WaliController::class, 'index']);
+    Route::get('/', [WaliController::class, 'index']);
+    Route::get('/wali', [WaliController::class, 'wali']);
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'auth:admin', 'auth:superAdmin'])->group(function () {
     // Logout
     Route::post('/logout', [AuthController::class, 'logout']);
 

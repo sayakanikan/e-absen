@@ -25,13 +25,13 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert([
             'kelas_id'  => 1,
+            'qr_id'     => 1,
             'name'      => 'Windah Basudara',
             'nis'       => '33740112012321',
             'email'     => 'wbasura@gmail.com',
             'gender'    => 'L',
             'lahir_ayah'=> '1971-01-03',
             'lahir_ibu' => '1969-12-22',
-            'qr_code'   => 'qweioqwoiu23ihf',
             'role_id'   => 0,
             'password'  => Hash::make('password'),
         ]);
@@ -53,6 +53,16 @@ class DatabaseSeeder extends Seeder
             'email'     => 'super@gmail.com',
             'password'  => Hash::make('password'),
             'role_id'   => 2,
+        ]);
+        DB::table('absens')->insert([
+            'user_id'   => 1,
+            'qr_id'     => 1,
+            'kelas_id'  => 1,
+            'admin_id'  => 1,
+            'status'    => 'Masuk',
+        ]);
+        DB::table('qrs')->insert([
+            'token'     => \Illuminate\Support\Str::random(12),
         ]);
     }
 }

@@ -1,59 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('wali/layout')
+@section('contentWali')
+    {{-- Jumbotron --}}
+    <div class="bg-image rounded-3 d-flex" style="
+      background-image: url(../../template/images/carousel/banner_12.jpg);
+      height: 600px;
+      background-size: cover;
+    ">
+      <div class="container align-items-center my-auto">
+        <h1 class="mb-3 font-weight-bold">Gali Potensimu <br> dengan E-Absen</h1>
+        <h4 class="mb-3 font-weight-normal">Permudah pengelolan, dan pemantauan absen siswa di sekolah!</h4>
+        <a class="btn btn-primary font-weight-bold" href="#!" role="button">Siswa/Guru</a>
+        <a class="btn btn-dark font-weight-bold" href="#!" role="button">Wali Murid</a>
+      </div>
+    </div>
+    {{-- End of Jumbotron --}}
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>E-Absen | {{ $title }}</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="../../template/vendors/feather/feather.css">
-  <link rel="stylesheet" href="../../template/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="../../template/vendors/css/vendor.bundle.base.css">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="../../template/css/vertical-layout-light/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="../../template/images/jateng.png" />
-</head>
-
-<body>
-  <div class="container-scroller">
-      {{-- Navbar --}}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="#">E-Absen</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-              <a class="nav-link active" href="#">Beranda <span class="sr-only">(current)</span></a>
-              <a class="nav-link" href="#">Informasi</a>
-            </div>
-          </div>
-        </div>
-      </nav>
-      {{-- End of navbar --}}
-      {{-- Content --}}
-      
-      {{-- End of Content --}}
+  {{-- Section 1 --}}
+  <div class="container py-5">
+    <div class="row my-5">
+      <div class="col-6">
+        <h1 class="font-weight-bolder my-4">E-Absen</h1>
+        <h4>Aplikasi <span class="text-warning">pengelolaan absensi</span> berbasis website, yang dapat digunakan untuk <span class="text-warning">absen</span>, serta pengelolaanya</h4>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum est beatae magnam ea nihil ab ducimus similique atque veritatis illo. Sunt ratione voluptates sint. Sunt, eius voluptates inventore earum nobis adipisci labore facilis deleniti libero impedit eligendi veniam excepturi modi praesentium fugiat? Asperiores, corporis consequatur aliquam officia esse et blanditiis ratione eos, sequi modi nesciunt repellendus soluta pariatur, natus quo reprehenderit eveniet doloremque dolorum sint vitae assumenda necessitatibus. Quam aperiam eveniet rem eum suscipit mollitia.</p>
+      </div>
+      <div class="col-6 d-flex">
+        <img src="../../template/images/carousel/banner_3.jpg" alt="gambar sekolah" width="500px" class="mx-auto rounded">
+      </div>
+    </div>
   </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="../../template/vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="../../template/js/off-canvas.js"></script>
-  <script src="../../template/js/hoverable-collapse.js"></script>
-  <script src="../../template/js/template.js"></script>
-  <script src="../../template/js/settings.js"></script>
-  <script src="../../template/js/todolist.js"></script>
-  <!-- endinject -->
-</body>
-
-</html>
+  {{-- End of Section 1 --}}
+@endsection

@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('super_admins', function (Blueprint $table) {
+        Schema::create('qrs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('nip');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->tinyInteger('role_id')->default(2);
-            $table->rememberToken()->nullable();
+            $table->string('token');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('super_admins');
+        Schema::dropIfExists('qrs');
     }
 };

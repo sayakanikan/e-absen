@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AuthController extends Controller
 {
+
     public function index(){
         return view('auth/login', [
             'title' => "Login",
@@ -24,7 +26,21 @@ class AuthController extends Controller
             'password'  => 'required|min:5'
         ]);
 
-        if(Auth::attempt($credentials)){
+        // if(Auth::attempt($credentials) ){
+        //     $request->session()->regenerate();
+
+        //     return redirect()->intended('/dashboard');
+        // }
+
+        if(Auth::guard('web')->attempt($credentials)){
+            $request->session()->regenerate();
+
+            return redirect()->intended('/dashboard');
+        } else if (Auth::guard('admin')->attempt($request->only('email', 'password'))){
+            $request->session()->regenerate();
+            dd($request);
+            return redirect()->intended('/dashboard');
+        } else if (Auth::guard('superAdmin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)){
             $request->session()->regenerate();
 
             return redirect()->intended('/dashboard');
@@ -37,7 +53,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/login');
     }
 
     public function forgot(){
@@ -61,7 +77,7 @@ class AuthController extends Controller
         );
 
         return $status === Password::RESET_LINK_SENT
-                ? redirect('/')->with('success', 'Link reset password berhasil dikirim ke email anda. Silahkan cek email anda!')
+                ? redirect('/login')->with('success', 'Link reset password berhasil dikirim ke email anda. Silahkan cek email anda!')
                 : back()->with('loginError', 'Masalah pada jaringan, silahkan coba lagi!');
     }
 
@@ -98,7 +114,7 @@ class AuthController extends Controller
         );
      
         return $status === Password::PASSWORD_RESET
-                    ? redirect('/')->with('success', 'Password berhasil direset, Silahkan login dengan password baru!')
+                    ? redirect('/login')->with('success', 'Password berhasil direset, Silahkan login dengan password baru!')
                     : back()->withErrors(['loginError' => [__($status)]]);
     }
 }
