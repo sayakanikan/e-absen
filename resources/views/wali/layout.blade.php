@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../../template/css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../template/images/jateng.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -24,7 +25,7 @@
       {{-- Navbar --}}
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <a class="navbar-brand" href="#"><img src="../../template/images/absen.png" alt="logo" width="150px"></a>
+          <a class="navbar-brand" href="/"><img src="../../template/images/absen.png" alt="logo" width="150px"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -32,7 +33,7 @@
             <div class="navbar-nav ml-auto">
               <a class="nav-link {{ Request::is('/') ? 'active' : '' }} font-weight-bold text-lg" href="/">Beranda <span class="sr-only">(current)</span></a>
               <a class="nav-link ml-2 font-weight-bold {{ Request::is('wali*') ? 'active' : '' }}" href="/wali">Wali</a>
-              <a class="btn btn-sm btn-success ml-3 my-auto font-weight-bold" href="/login">Masuk</a>
+              <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" href="/login">Masuk</a>
             </div>
           </div>
         </div>
@@ -56,7 +57,7 @@
               <h3 class="font-weight-bold mb-3">Navigasi</h3>
               <ul>
                 <li><a href="/" class="text-decoration-none">Beranda</a></li>
-                <li><a href="" class="text-decoration-none">Wali Murid</a></li>
+                <li><a href="/wali" class="text-decoration-none">Wali Murid</a></li>
                 <li><a href="/login" class="text-decoration-none">Siswa/Guru</a></li>
               </ul>
             </div>

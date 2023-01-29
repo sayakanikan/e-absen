@@ -40,14 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admin',
-        ],
-        'superAdmin' => [
-            'driver' => 'session',
-            'provider' => 'superAdmin',
-        ],
+        // 'admin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'admin',
+        // ],
+        // 'superAdmin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'superAdmin',
+        // ],
     ],
 
     /*
@@ -72,14 +72,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'admin' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
-        ],
-        'superAdmin' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\SuperAdmin::class,
-        ],
+        // 'admin' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Admin::class,
+        // ],
+        // 'superAdmin' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\SuperAdmin::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',

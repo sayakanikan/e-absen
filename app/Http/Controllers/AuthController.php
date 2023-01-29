@@ -36,15 +36,16 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             return redirect()->intended('/dashboard');
-        } else if (Auth::guard('admin')->attempt($request->only('email', 'password'))){
-            $request->session()->regenerate();
-            dd($request);
-            return redirect()->intended('/dashboard');
-        } else if (Auth::guard('superAdmin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)){
-            $request->session()->regenerate();
+        } 
+        // else if (Auth::guard('admin')->attempt($request->only('email', 'password'))){
+        //     $request->session()->regenerate();
+        //     dd($request);
+        //     return redirect()->intended('/dashboard');
+        // } else if (Auth::guard('superAdmin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)){
+        //     $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard');
-        }
+        //     return redirect()->intended('/dashboard');
+        // }
 
         return back()->with('loginError', 'Username / Password anda salah!');
     }

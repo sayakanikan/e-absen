@@ -45,6 +45,6 @@ class User extends Authenticatable
     ];
 
     public function kelas(){
-        $this->belongsTo(Kelas::class);
+        return $this->belongsTo(Kelas::class);
     }
 }

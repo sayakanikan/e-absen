@@ -88,25 +88,38 @@
       </div>
     </div>
   </div> --}}
+  {{-- <div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-title mb-3 ml-2">Pemberitahuan Waktu Absen</p>
+          <div class="alert alert-success" role="alert">
+            A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+          </div>
+          <div class="alert alert-danger" role="alert">
+            Sudah waktunya anda absen. Segera absen di <a href="#" class="alert-link">sini</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> --}}
   <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <div class="d-flex justify-content-between">
-            <p class="card-title mb-3 ml-2">Arsip terbaru</p>
-            <a class="text-info mb-3 ml-2" href="/dokumen">Lihat semua arsip <i class="ti-arrow-right"></i></a>
+            <p class="card-title mb-3 ml-2">Absen Terakhir</p>
+            <a class="text-info mb-3 ml-2" href="/dokumen">Lihat riwayat absen <i class="ti-arrow-right"></i></a>
           </div>
           <div class="table-responsive">
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama Dokumen</th>
-                  <th>Kategori</th>
-                  <th>Kode Dokumen</th>
-                  <th>Tanggal Ditambahkan</th>
-                  <th>Diinput oleh</th>
-                  <th>Aksi</th>
+                  <th>Tanggal</th>
+                  <th>Pukul</th>
+                  <th>Diabsen oleh</th>
+                  <th>Status</th>
                 </tr>  
               </thead>
               <tbody>
@@ -117,10 +130,6 @@
                     <td class="font-weight-bold"> $item->kategori->kategori </td>
                     <td> $item->kode_dokumen </td>
                     <td> $item->created_at->format('d M Y') </td>
-                    <td> $item->user->name </td>
-                    <td class="font-weight-medium">
-                      <a href="/dokumen/ $item->id " class="btn btn-primary btn-sm"><i class="ti-eye"></i></a>
-                    </td>
                   </tr>
                 {{-- @endforeach --}}
               </tbody>

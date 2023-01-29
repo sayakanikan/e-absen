@@ -13,7 +13,7 @@ class Kelas extends Model
     protected $guarded = ['id'];
 
     public function admin(){
-        return $this->belongsTo(Admin::class, 'foreign_key');
+        return $this->belongsTo(Admin::class);
     }
 
     public function user(){

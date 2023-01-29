@@ -7,7 +7,7 @@
       </a>
     </li>
     @can('superAdmin')
-      <li class="nav-item {{ Request::is('kelas*') || Request::is('filter*') || Request::is('searchKelas*') ? 'active' : '' }}">
+      <li class="nav-item {{ Request::is('ruang*') || Request::is('filter*') || Request::is('searchRuang*') ? 'active' : '' }}">
         <a class="nav-link  d-flex align-middle justify-content-center" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <i class="icon-layout menu-icon ti-folder mb-1"></i>
           <span class="menu-title">Data Kelas</span>
@@ -15,13 +15,13 @@
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="/kelas">Ruang Kelas</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/ruang">Ruang Kelas</a></li>
           </ul>
         </div>
       </li>
     @endcan
     @can('superAdmin')
-    <li class="nav-item {{ Request::is('wali/*') || Request::is('siswa/*') || Request::is('searchWali*') || Request::is('searchSiswa*') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('wali*') || Request::is('siswa*') || Request::is('searchWali*') || Request::is('searchSiswa*') ? 'active' : '' }}">
       <a class="nav-link  d-flex align-middle justify-content-center" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
         <i class="icon-columns menu-icon ti-user mb-1"></i>
         <span class="menu-title">Semua Akun</span>
@@ -29,8 +29,8 @@
       </a>
       <div class="collapse" id="form-elements">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"><a class="nav-link" href="/admin">Akun Wali Kelas</a></li>
-          <li class="nav-item"><a class="nav-link" href="/user">Akun Siswa</a></li>
+          <li class="nav-item"><a class="nav-link" href="/walikelas">Akun Wali Kelas</a></li>
+          <li class="nav-item"><a class="nav-link" href="/siswa">Akun Siswa</a></li>
         </ul>
       </div>
     </li>
@@ -39,6 +39,12 @@
       <a class="nav-link " href="/laporan">
         <i class="icon-paper menu-icon mb-1"></i>
         <span class="menu-title">Laporan</span>
+      </a>
+    </li>
+    <li class="nav-item {{ Request::is('riwayat') ? 'active' : '' }}">
+      <a class="nav-link " href="/riwayat">
+        <i class="icon-paper menu-icon mb-1"></i>
+        <span class="menu-title">Riwayat Absen</span>
       </a>
     </li>
     {{-- <hr style="border: 1px solid #8e9aba; width:100%;"> --}}
