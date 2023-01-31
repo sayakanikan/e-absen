@@ -52,6 +52,12 @@
                   </small>
                 </div>
               </div>
+              @can('user')
+                <div class="col-md-4 my-auto mx-auto">
+                  <img src="../../template/images/jateng.png" alt="QR" style="max-width: 125px; max-height: 125px; display:block; object-fit:cover" class="mx-auto mb-2">
+                  <p class="font-weight-bold text-center">QR anda</p>
+                </div>
+              @endcan
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
@@ -63,15 +69,30 @@
                   </div>
                 @enderror
               </div>
-              <div class="form-group col-md-6">
-                <label for="nip">NIP</label>
-                <input type="text" class="form-control @error('nip') is-invalid @enderror" name="nip" id="nip" value="{{ old('nip', $akun->nip) }}" required>
-                @error('nip')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                @enderror
-              </div>
+              {{-- Jika admin/super admin maka input nip--}}
+              @cannot('user')
+                <div class="form-group col-md-6">
+                  <label for="nip">NIP</label>
+                  <input type="text" class="form-control @error('nip') is-invalid @enderror" name="nip" id="nip" value="{{ old('nip', $akun->nip) }}" required>
+                  @error('nip')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
+                </div>
+              @endcannot
+              {{-- Jika user maka input nis --}}
+              @can('user')
+                <div class="form-group col-md-6">
+                  <label for="nis">NIS</label>
+                  <input type="text" class="form-control @error('nis') is-invalid @enderror" name="nis" id="nis" value="{{ old('nis', $akun->nis) }}" required>
+                  @error('nis')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
+                </div>
+              @endcan
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
@@ -83,37 +104,54 @@
                   </div>
                 @enderror
               </div>
-              <div class="form-group col-md-2">
-                <label for="gender">Gender</label>
-                <select id="gender" name="gender" class="form-control" required>
-                  <option selected hidden disabled>--Pilih Gender--</option>
-                    @if (old('gender', $akun->gender) == "L")
-                      <option value="L" selected>Laki - laki</option>
-                      <option value="P">Perempuan</option>
-                    @else
-                      <option value="L">Laki - laki</option>
-                      <option value="P" selected>Perempuan</option>
-                    @endif
-                </select>
-              </div>
-              <div class="form-group col-md-4">
-                <label for="telepon">No. Telepon</label>
-                <input type="tel" class="form-control @error('telepon') is-invalid @enderror" name="telepon" id="telepon" value="{{ old('telepon', $akun->telepon) }}" required>
-                @error('telepon')
-                  <div class="invalid-feedback">
-                    {{ $message }}
+              @can('admin')
+                  <div class="form-group col-md-6">
+                    <label for="ruang">Ruang Kelas</label>
+                    <select id="ruang" name="ruang" class="form-control" required>
+                      <option selected hidden disabled>--Pilih Kelas--</option>
+                      {{-- @foreach ($ruang as $item)
+                        @if (old('kelas_id', $akun[0]->kelas_id) == $item->id)
+                          <option value="{{ $item->id }}" selected>{{ $item->kelas }}</option>
+                        @else
+                          <option value="{{ $item->id }}">{{ $item->kelas }}</option>
+                        @endif
+                      @endforeach --}}
+                    </select>
                   </div>
-                @enderror
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="alamat">Alamat Lengkap</label>
-              <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" value="{{ old('alamat', $akun->alamat) }}" required>
-              @error('alamat')
-                <div class="invalid-feedback">
-                  {{ $message }}
+              @endcan
+              @can('user')
+                <div class="form-group col-md-2">
+                  <label for="gender">Gender</label>
+                  <select id="gender" name="gender" class="form-control" required>
+                    <option selected hidden disabled>--Pilih Gender--</option>
+                      @if (old('gender', $akun->gender) == "L")
+                        <option value="L" selected>Laki - laki</option>
+                        <option value="P">Perempuan</option>
+                      @else
+                        <option value="L">Laki - laki</option>
+                        <option value="P" selected>Perempuan</option>
+                      @endif
+                  </select>
                 </div>
-              @enderror
+                <div class="form-group col-md-2">
+                  <label for="lahir_ayah">Lahir ayah</label>
+                  <input type="date" class="form-control @error('lahir_ayah') is-invalid @enderror" name="lahir_ayah" id="lahir_ayah" value="{{ old('lahir_ayah', $akun->lahir_ayah) }}" required>
+                  @error('lahir_ayah')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="lahir_ibu">Lahir ibu</label>
+                  <input type="date" class="form-control @error('lahir_ibu') is-invalid @enderror" name="lahir_ibu" id="lahir_ibu" value="{{ old('lahir_ibu', $akun->lahir_ibu) }}" required>
+                  @error('lahir_ibu')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
+                </div>
+              @endcan
             </div>
             <div class="alert alert-warning" role="alert">
               Isi kolom password jika anda ingin mengubahnya.

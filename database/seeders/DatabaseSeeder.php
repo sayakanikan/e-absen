@@ -59,10 +59,11 @@ class DatabaseSeeder extends Seeder
             'qr_id'     => 1,
             'kelas_id'  => 1,
             'admin_id'  => 1,
-            'status'    => 'Masuk',
+            'status'    => 'Tepat Waktu',
         ]);
         DB::table('qrs')->insert([
             'token'     => \Illuminate\Support\Str::random(12),
+            'barcode'   => 'storage/barcode/qr.png',
         ]);
     }
 }

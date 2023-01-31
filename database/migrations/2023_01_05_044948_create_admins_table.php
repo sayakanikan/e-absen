@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('nip');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('foto')->nullable();
             $table->tinyInteger('role_id')->default(1);
             $table->rememberToken()->nullable();
             $table->timestamps();

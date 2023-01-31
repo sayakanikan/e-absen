@@ -31,11 +31,11 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFour();
 
         Gate::define('superAdmin', function(User $superAdmin){
-            return $superAdmin->role_id == 0;
+            return $superAdmin->role_id == 2;
         });
 
         Gate::define('admin', function(User $admin){
-            return $admin->role_id == 0;
+            return $admin->role_id == 1;
         });
 
         Gate::define('user', function(User $user){

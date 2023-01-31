@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('lahir_ayah')->nullable();
             $table->date('lahir_ibu')->nullable();
             $table->string('password');
+            $table->string('foto')->nullable();
             $table->tinyInteger('role_id')->default(0);
             $table->timestamps();
         });

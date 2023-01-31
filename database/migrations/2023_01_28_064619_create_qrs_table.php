@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('qrs', function (Blueprint $table) {
             $table->id();
             $table->string('token');
+            $table->string('barcode');
             $table->timestamps();
         });
     }

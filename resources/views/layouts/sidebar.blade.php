@@ -35,12 +35,14 @@
       </div>
     </li>
     @endcan
+    @can('admin')
     <li class="nav-item {{ Request::is('laporan') ? 'active' : '' }}">
       <a class="nav-link " href="/laporan">
         <i class="icon-paper menu-icon mb-1"></i>
         <span class="menu-title">Laporan</span>
       </a>
     </li>
+    @endcan
     <li class="nav-item {{ Request::is('riwayat') ? 'active' : '' }}">
       <a class="nav-link " href="/riwayat">
         <i class="icon-paper menu-icon mb-1"></i>

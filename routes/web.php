@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WaliController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WaliKelasController;
 
@@ -50,6 +51,9 @@ Route::middleware(['auth'])->group(function () {
 
     //Siswa
     Route::get('/siswa', [SiswaController::class, 'index']);
+
+    // Riwayat Absen Siswa
+    Route::get('/riwayat', [RiwayatController::class, 'index']);
 
     //Update Profile
     Route::get('/akun', [DashboardController::class, 'edit']);
