@@ -3,7 +3,7 @@
     {{-- Jumbotron --}}
     <div class="bg-image rounded-3 d-flex" style="
       background-image: url(../../template/images/banner.jpg);
-      height: 600px;
+      height: 626px;
       background-size: cover;
     ">
       <div class="container align-items-center my-auto">

@@ -24,6 +24,7 @@
     <div class="card p-4">
       <div class="card-body">
         <div class="d-flex justify-content-between mb-3">
+          <h4>Absensi anda di kelas <b>{{ $kelas->kelas->kelas }}</b>, bulan <b>Febuari</b></h4>
           <button type="button" class="btn btn-primary btn-sm my-auto font-weight-bold " data-toggle="modal" data-target="#filterModal"><i class="ti-filter mr-2"></i>Filter berdasarkan</button>
         </div>
         <table class="table table-hover table-striped">

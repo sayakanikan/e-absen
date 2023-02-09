@@ -23,6 +23,7 @@ class DashboardController extends Controller
             'jmlKelas'      => Kelas::all()->count(),
             'jmlWalikelas'  => Admin::all()->count(),
             'jmlBarcode'    => Qr::all()->count(),
+            'kelas'         => User::with('kelas')->first(),
             'absen'         => Absen::where('user_id', auth()->user()->id)->latest()->take(5)->get(),
             'bulan'         => $bulan,
         ]);

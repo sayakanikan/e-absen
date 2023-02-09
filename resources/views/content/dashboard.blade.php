@@ -6,13 +6,14 @@
       <div class="row">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
           <h3 class="font-weight-bold">Hai,  {{ auth()->user()->name }} !</h3>
-          <h6 class="font-weight-normal mb-0">Selamat datang di aplikasi <span class="text-primary font-weight-bold">E-Absen</span>.
-            {{-- @if ($user->role_id == 1)
-              <span class="text-primary">admin!</span>
-            @else
-              <span class="text-primary">user!</span>
-            @endif --}}
-          </h6>
+          <div class="d-flex">
+            <h6 class="font-weight-normal mb-0 mr-1">Selamat datang di aplikasi <span class="text-primary font-weight-bold">E-Absen</span>.</h6>
+              @if (auth()->user()->role_id == 0)
+                <h6>Anda sekarang di kelas <span class="text-primary">{{ $kelas->kelas->kelas }}</span></h6>
+              @else
+                <h6>Anda sekarang mengajar kelas <span class="text-primary">{{ $kelas->kelas->kelas }}</span></h6>
+              @endif
+          </div>
         </div>
         <div class="col-12 col-xl-4">
           <div class="justify-content-end d-flex">
@@ -95,6 +96,7 @@
                 <thead>
                   <tr>
                     <th>Bulan</th>
+                    <th>Kelas</th>
                     <th>Persen Kehadiran</th>
                   </tr>  
                 </thead>
@@ -102,6 +104,7 @@
                   @foreach ($bulan as $item)
                     <tr>
                       <td>{{ $item }}</td>
+                      <td>{{ $kelas->kelas->kelas }}</td>
                       <td class="font-weight-bold">100%</td>
                     </tr>
                   @endforeach
