@@ -6,7 +6,6 @@
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-    @can('superAdmin')
       <li class="nav-item {{ Request::is('ruang*') || Request::is('filter*') || Request::is('searchRuang*') ? 'active' : '' }}">
         <a class="nav-link  d-flex align-middle justify-content-center" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <i class="icon-layout menu-icon ti-folder mb-1"></i>
@@ -19,8 +18,6 @@
           </ul>
         </div>
       </li>
-    @endcan
-    @can('superAdmin')
     <li class="nav-item {{ Request::is('wali*') || Request::is('siswa*') || Request::is('searchWali*') || Request::is('searchSiswa*') ? 'active' : '' }}">
       <a class="nav-link  d-flex align-middle justify-content-center" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
         <i class="icon-columns menu-icon ti-user mb-1"></i>
@@ -34,15 +31,12 @@
         </ul>
       </div>
     </li>
-    @endcan
-    @can('admin')
     <li class="nav-item {{ Request::is('laporan') ? 'active' : '' }}">
       <a class="nav-link " href="/laporan">
         <i class="icon-paper menu-icon mb-1"></i>
         <span class="menu-title">Laporan</span>
       </a>
     </li>
-    @endcan
     <li class="nav-item {{ Request::is('riwayat') ? 'active' : '' }}">
       <a class="nav-link " href="/riwayat">
         <i class="icon-paper menu-icon mb-1"></i>
