@@ -44,7 +44,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
     // Ruang Kelas
-    Route::get('/ruang', [KelasController::class, 'index']);
+    Route::resource('/ruang', KelasController::class);
+    Route::get('/searchRuang', [KelasController::class, 'search']);
     
     // Wali Kelas
     Route::get('/walikelas', [WaliKelasController::class, 'index']);

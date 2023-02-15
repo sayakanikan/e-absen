@@ -6,18 +6,25 @@
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-      <li class="nav-item {{ Request::is('ruang*') || Request::is('filter*') || Request::is('searchRuang*') ? 'active' : '' }}">
-        <a class="nav-link  d-flex align-middle justify-content-center" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-          <i class="icon-layout menu-icon ti-folder mb-1"></i>
-          <span class="menu-title">Data Kelas</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="ui-basic">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="/ruang">Ruang Kelas</a></li>
-          </ul>
-        </div>
-      </li>
+    <li class="nav-item {{ Request::is('ruang*') || Request::is('searchRuang*') ? 'active' : '' }}">
+      <a class="nav-link " href="/ruang">
+        <i class="icon-layout menu-icon ti-folder mb-1"></i>
+        <span class="menu-title">Ruang Kelas</span>
+      </a>
+    </li>
+    <li class="nav-item {{ Request::is('plotGuru*') || Request::is('plotSiswa*') ? 'active' : '' }}">
+      <a class="nav-link  d-flex align-middle justify-content-center" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <i class="icon-layout menu-icon ti-direction-alt mb-1"></i>
+        <span class="menu-title">Plot Kelas</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/plotGuru">Wali Kelas</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/plotSiswa">Siswa</a></li>
+        </ul>
+      </div>
+    </li>
     <li class="nav-item {{ Request::is('wali*') || Request::is('siswa*') || Request::is('searchWali*') || Request::is('searchSiswa*') ? 'active' : '' }}">
       <a class="nav-link  d-flex align-middle justify-content-center" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
         <i class="icon-columns menu-icon ti-user mb-1"></i>
@@ -31,7 +38,13 @@
         </ul>
       </div>
     </li>
-    <li class="nav-item {{ Request::is('laporan') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('absen*') ? 'active' : '' }}">
+      <a class="nav-link " href="/absen">
+        <i class="icon-paper menu-icon mb-1"></i>
+        <span class="menu-title">Absen</span>
+      </a>
+    </li>
+    <li class="nav-item {{ Request::is('laporan*') ? 'active' : '' }}">
       <a class="nav-link " href="/laporan">
         <i class="icon-paper menu-icon mb-1"></i>
         <span class="menu-title">Laporan</span>
