@@ -33,7 +33,34 @@
             <div class="navbar-nav ml-auto">
               <a class="nav-link {{ Request::is('/') ? 'active' : '' }} font-weight-bold text-lg" href="/">Beranda <span class="sr-only">(current)</span></a>
               <a class="nav-link ml-2 font-weight-bold {{ Request::is('wali*') ? 'active' : '' }}" href="/wali">Wali</a>
-              <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" href="/login">Masuk</a>
+              <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" data-toggle="modal" data-target=".bd-example-modal-lg">Masuk</a>
+              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Masuk sebagai : </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-3 p-2">
+                          <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" href="admin/login" style="position: relative; left: -4px;">Admin</a>
+                        </div>
+                        <div class="col-3 p-2">
+                          <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" href="/login">Siswa</a>
+                        </div>
+                        <div class="col-6 p-2">
+                          <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" href="/login">Wali Kelas</a>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WaliKelasController;
+use App\Http\Controllers\AdminAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,10 @@ Route::middleware(['guest'])->group(function () {
     // Login
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/authenticate', [AuthController::class, 'authenticate']);
+
+    //login-admin
+    Route::get('admin/login', [AdminAuthController::class, 'getLogin'])->name('admin.login');
+    Route::post('/postlogin', [AdminAuthController::class,'postLogin']);
 
     // Forget Password
     Route::get('/forgotpassword', [AuthController::class, 'forgot'])->name('password.request');
@@ -42,6 +47,8 @@ Route::middleware(['auth'])->group(function () {
 
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    // Dashboard admin
+    Route::get('/dashboardAdmin', [DashboardController::class, 'indexAdmin']);
 
     // Ruang Kelas
     Route::resource('/ruang', KelasController::class);
@@ -59,6 +66,14 @@ Route::middleware(['auth'])->group(function () {
     //Update Profile
     Route::get('/akun', [DashboardController::class, 'edit']);
     Route::put('/akun/{id}', [DashboardController::class, 'update']);
+});
+
+Route::middleware(['auth:admin'])->group(function () {
+    // Logout
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'indexAdmin']);
 });
 
 Route::fallback(function () {

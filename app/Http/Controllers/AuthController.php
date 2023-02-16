@@ -31,12 +31,12 @@ class AuthController extends Controller
 
         //     return redirect()->intended('/dashboard');
         // }
-
+        $guard = Auth::guard();
         if(Auth::guard('web')->attempt($credentials)){
             $request->session()->regenerate();
 
             return redirect()->intended('/dashboard');
-        } 
+        } else{
         // else if (Auth::guard('admin')->attempt($request->only('email', 'password'))){
         //     $request->session()->regenerate();
         //     dd($request);
@@ -47,7 +47,8 @@ class AuthController extends Controller
         //     return redirect()->intended('/dashboard');
         // }
 
-        return back()->with('loginError', 'Username / Password anda salah!');
+            return back()->with('loginError', 'Username / Password anda salah!');
+        }
     }
 
     public function logout(Request $request){

@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Kelas;
 use App\Models\Qr;
 use App\Models\User;
+use App\Models\AdminLogin;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -24,7 +25,25 @@ class DashboardController extends Controller
             'jmlWalikelas'  => Admin::all()->count(),
             'jmlBarcode'    => Qr::all()->count(),
             'kelas'         => User::with('kelas')->first(),
-            'absen'         => Absen::where('user_id', auth()->user()->id)->latest()->take(5)->get(),
+            // 'absen'         => Absen::where('user_id', auth()->user()->id)->latest()->take(5)->get(),
+            'bulan'         => $bulan,
+        ]);
+    }
+    public function indexAdmin(){
+        if (date('n') >= 1 && date('n') <= 6) {
+            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'];
+        } else {
+            $bulan = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        }
+        return view('content/dashboardAdmin', [
+            'title'         => 'Dashboard admin',
+            'jmlMurid'      => AdminLogin::all()->count(),
+            'jmlKelas'      => Kelas::all()->count(),
+            'jmlWalikelas'  => Admin::all()->count(),
+            'jmlBarcode'    => Qr::all()->count(),
+            'guard'         => 'admin',
+            'kelas'         => User::with('kelas')->first(),
+            // 'absen'         => Absen::where('user_id', auth()->user()->id)->latest()->take(5)->get(),
             'bulan'         => $bulan,
         ]);
     }
