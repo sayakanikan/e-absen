@@ -6,6 +6,8 @@
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
+    
+    @if(auth()->guard('admin')->check())
     <li class="nav-item {{ Request::is('ruang*') || Request::is('searchRuang*') ? 'active' : '' }}">
       <a class="nav-link " href="/ruang">
         <i class="icon-layout menu-icon ti-folder mb-1"></i>
@@ -44,10 +46,24 @@
         <span class="menu-title">Absen</span>
       </a>
     </li>
+    <li class="nav-item {{ Request::is('riwayat') ? 'active' : '' }}">
+      <a class="nav-link " href="/riwayat">
+        <i class="icon-paper menu-icon mb-1"></i>
+        <span class="menu-title">Riwayat Absen</span>
+      </a>
+    </li>
     <li class="nav-item {{ Request::is('laporan*') ? 'active' : '' }}">
       <a class="nav-link " href="/laporan">
         <i class="icon-paper menu-icon mb-1"></i>
         <span class="menu-title">Laporan</span>
+      </a>
+    </li>
+        
+    @elseif(auth()->guard('web')->check())
+    <li class="nav-item {{ Request::is('absen*') ? 'active' : '' }}">
+      <a class="nav-link " href="/absen">
+        <i class="icon-paper menu-icon mb-1"></i>
+        <span class="menu-title">Absen</span>
       </a>
     </li>
     <li class="nav-item {{ Request::is('riwayat') ? 'active' : '' }}">
@@ -56,6 +72,9 @@
         <span class="menu-title">Riwayat Absen</span>
       </a>
     </li>
+        
+    @endif
+    
     {{-- <hr style="border: 1px solid #8e9aba; width:100%;"> --}}
     <li class="nav-item {{ Request::is('akun') ? 'active' : '' }}">
       <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">

@@ -5,13 +5,17 @@
     <div class="col-md-12 grid-margin">
       <div class="row">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-          <h3 class="font-weight-bold">Hai,  {{ auth()->user()->name }} !</h3>
+        @if(auth()->guard('admin')->check())
+          <h3 class="font-weight-bold">Hai,  {{ auth()->guard('admin')->user()->name }} !</h3>
+        @elseif(auth()->guard('web')->check())
+          <h3 class="font-weight-bold">Hai,  {{ auth()->guard('admin')->user()->name }} !</h3>
+        @endif
           <div class="d-flex">
             <h6 class="font-weight-normal mb-0 mr-1">Selamat datang di aplikasi <span class="text-primary font-weight-bold">E-Absen</span>.</h6>
-              @if (auth()->user()->role_id == 0)
-                <h6>Anda sekarang di kelas <span class="text-primary">{{ $kelas->kelas->kelas }}</span></h6>
-              @else
-                <h6>Anda sekarang mengajar kelas <span class="text-primary">{{ $kelas->kelas->kelas }}</span></h6>
+              @if (auth()->guard('web')->check())
+                <h6>Anda sekarang di kelas <span class="text-primary">{{$kelas}}</span></h6>
+              @elseif(auth()->guard('admin')->check())
+                <h6>Anda sekarang mengajar kelas <span class="text-primary">{{ $kelas }}</span></h6>
               @endif
           </div>
         </div>
@@ -28,7 +32,6 @@
     </div>
   </div>
   {{-- Highlight Data untuk super Admin --}}
-  @can('superAdmin')
     <div class="row">
       <div class="col-md-6 grid-margin transparent">
         <div class="row">
@@ -68,9 +71,7 @@
         </div>
       </div>
     </div>
-  @endcan
   {{-- Dashboard untuk Role Siswa --}}
-  @can('user')
     <div class="row">
       <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
@@ -104,7 +105,7 @@
                   @foreach ($bulan as $item)
                     <tr>
                       <td>{{ $item }}</td>
-                      <td>{{ $kelas->kelas->kelas }}</td>
+                      <td>{{ $kelas }}</td>
                       <td class="font-weight-bold">100%</td>
                     </tr>
                   @endforeach
@@ -151,5 +152,4 @@
         </div>
       </div>
     </div>
-  @endcan
 @endsection

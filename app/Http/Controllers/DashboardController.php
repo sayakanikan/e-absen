@@ -13,37 +13,47 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
+        if(auth()->guard('admin')->check()){
+            $admin_id = auth()->guard('admin')->user()->admin_id;
+            $query = Absen::where('admin_id','=',$admin_id)->latest()->take(5)->get();
+            $tittle = 'Dashboard admin';
+            $jmlmurid = User::all()->count();
+            $jmlkelas = Kelas::all()->count();
+            $jmlwalikelas = Admin::all()->count();
+            $jmlbarcode = Qr::all()->count();
+            $kelas = Admin::select('kelas')
+            ->groupBy('kelas')
+            ->leftJoin('kelas', function($join){
+                $join->on('kelas.id', '=', 'admins.kelas_id');
+            })->pluck('kelas')->first();
+        }elseif(auth()->guard('web')->check()){
+            $user_id = auth()->guard('web')->user()->user_id;
+            $query = Absen::where('user_id','=',$user_id)->latest()->take(5)->get();
+            $tittle = 'Dashboard';
+            $jmlmurid = User::all()->count();
+            $jmlkelas = Kelas::all()->count();
+            $jmlwalikelas = Admin::all()->count();
+            $jmlbarcode = Qr::all()->count();
+            $kelas = User::distinct()->select('kelas')
+            ->groupBy('kelas')
+            ->leftJoin('kelas', function($join){
+                $join->on('kelas.id', '=', 'users.kelas_id');
+            })->pluck('kelas')->first();
+        }
+
         if (date('n') >= 1 && date('n') <= 6) {
             $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'];
         } else {
             $bulan = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         }
         return view('content/dashboard', [
-            'title'         => 'Dashboard',
-            'jmlMurid'      => User::all()->count(),
-            'jmlKelas'      => Kelas::all()->count(),
-            'jmlWalikelas'  => Admin::all()->count(),
-            'jmlBarcode'    => Qr::all()->count(),
-            'kelas'         => User::with('kelas')->first(),
-            // 'absen'         => Absen::where('user_id', auth()->user()->id)->latest()->take(5)->get(),
-            'bulan'         => $bulan,
-        ]);
-    }
-    public function indexAdmin(){
-        if (date('n') >= 1 && date('n') <= 6) {
-            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'];
-        } else {
-            $bulan = ['Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-        }
-        return view('content/dashboardAdmin', [
-            'title'         => 'Dashboard admin',
-            'jmlMurid'      => AdminLogin::all()->count(),
-            'jmlKelas'      => Kelas::all()->count(),
-            'jmlWalikelas'  => Admin::all()->count(),
-            'jmlBarcode'    => Qr::all()->count(),
-            'guard'         => 'admin',
-            'kelas'         => User::with('kelas')->first(),
-            // 'absen'         => Absen::where('user_id', auth()->user()->id)->latest()->take(5)->get(),
+            'title'         => $tittle,
+            'jmlMurid'      => $jmlmurid,
+            'jmlKelas'      => $jmlkelas,
+            'jmlWalikelas'  => $jmlwalikelas,
+            'jmlBarcode'    => $jmlbarcode,
+            'kelas'         => $kelas,
+            'absen'         => $query,
             'bulan'         => $bulan,
         ]);
     }

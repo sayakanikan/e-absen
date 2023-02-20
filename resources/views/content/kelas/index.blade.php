@@ -64,7 +64,7 @@
               <tbody>
                 @foreach ($ruang as $item)
                   <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->iteration }}</td>
                     <td>{{ $item->kelas }}</td>
                     <td>{{ $item->jml_siswa }} Siswa</td>
                     <td>

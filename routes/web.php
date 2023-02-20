@@ -47,8 +47,6 @@ Route::middleware(['auth'])->group(function () {
 
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index']);
-    // Dashboard admin
-    Route::get('/dashboardAdmin', [DashboardController::class, 'indexAdmin']);
 
     // Ruang Kelas
     Route::resource('/ruang', KelasController::class);
@@ -59,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Siswa
     Route::get('/siswa', [SiswaController::class, 'index']);
+    Route::get('/searchSiswa', [SiswaController::class, 'search']);
 
     // Riwayat Absen Siswa
     Route::get('/riwayat', [RiwayatController::class, 'index']);
@@ -66,14 +65,6 @@ Route::middleware(['auth'])->group(function () {
     //Update Profile
     Route::get('/akun', [DashboardController::class, 'edit']);
     Route::put('/akun/{id}', [DashboardController::class, 'update']);
-});
-
-Route::middleware(['auth:admin'])->group(function () {
-    // Logout
-    Route::post('/logout', [AuthController::class, 'logout']);
-
-    // Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'indexAdmin']);
 });
 
 Route::fallback(function () {

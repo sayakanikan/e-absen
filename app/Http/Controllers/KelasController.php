@@ -14,7 +14,7 @@ class KelasController extends Controller
             'title' => 'Ruang Kelas',
             'tgl'   => date('l, d F Y'),
             'ruang' => Kelas::latest()->paginate(5),
-            'foto'  => auth()->user()->foto,
+            // 'foto'  => auth()->user()->foto,
         ]);
     }
 
@@ -46,7 +46,6 @@ class KelasController extends Controller
             'kelas' => $kelas,
             'murid' => $murid,
             'guru'  => $guru,
-            'foto'  => auth()->user()->foto,
         ]);
     }
 

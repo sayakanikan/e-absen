@@ -67,7 +67,7 @@ class AdminAuthController extends Controller
         if(auth()->guard('admin')->attempt($credentials)){
             $request->session()->regenerate();
 
-            return redirect()->intended('/dashboardAdmin');
+            return redirect()->intended('/dashboard');
         } else {
             // $this->incrementLoginAttempts($request);
 
@@ -124,7 +124,7 @@ class AdminAuthController extends Controller
         auth()->guard('admin')->logout();
         session()->flush();
 
-        return redirect()->route('admin.login');
+        return redirect()->route('/');
     }
 
     // public function getForgotPassword()
