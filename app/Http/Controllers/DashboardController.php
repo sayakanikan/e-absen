@@ -14,7 +14,7 @@ class DashboardController extends Controller
 {
     public function index(){
         if(auth()->guard('admin')->check()){
-            $admin_id = auth()->guard('admin')->user()->admin_id;
+            $admin_id = auth()->guard('admin')->user()->id;
             $query = Absen::where('admin_id','=',$admin_id)->latest()->take(5)->get();
             $tittle = 'Dashboard admin';
             $jmlmurid = User::all()->count();
@@ -27,8 +27,8 @@ class DashboardController extends Controller
                 $join->on('kelas.id', '=', 'admins.kelas_id');
             })->pluck('kelas')->first();
         }elseif(auth()->guard('web')->check()){
-            $user_id = auth()->guard('web')->user()->user_id;
-            $query = Absen::where('user_id','=',$user_id)->latest()->take(5)->get();
+            $user_id = auth()->guard('web')->user()->id;
+            $query = Absen::where('user_id','=',$user_id)->latest()->paginate(5);
             $tittle = 'Dashboard';
             $jmlmurid = User::all()->count();
             $jmlkelas = Kelas::all()->count();
@@ -40,7 +40,7 @@ class DashboardController extends Controller
                 $join->on('kelas.id', '=', 'users.kelas_id');
             })->pluck('kelas')->first();
         }
-
+        
         if (date('n') >= 1 && date('n') <= 6) {
             $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'];
         } else {
@@ -61,43 +61,40 @@ class DashboardController extends Controller
     // Edit Profile
     public function edit()
     {
+        // HARUS DI IF
         return view('content/akun', [
             'title' => 'Akun Anda',
-            'akun'  => auth()->user(),
-            'foto'  => auth()->user()->foto,
+            'akun'  => auth()->guard('admin')->user(),
+            'foto'  => auth()->guard('admin')->user()->foto,
             'ruang' => Kelas::all(),
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        if ($this->authorize('user')) {
-            $validatedData = $request->validate([
-                'name'      => 'required',
-                'nis'       => 'required',
-                'gender'    => 'required',
-                'alamat'    => 'required',
-                'telepon'   => 'required',
-                'email'     => 'required',
-                'foto'      => 'image|file|max:2160',
-            ]);
-    
-            if (!$request->foto) {
-                $validatedData['foto'] = $request->oldFoto;
-            }
-    
-            if($request->file('foto')){
-                $validatedData['foto'] = $request->file('foto')->store('');
-            }
-    
-            if (!$request->password) {
-                $validatedData['password'] = $request->oldPassword;
-            }
-    
-            $validatedData['role_id'] = auth()->user()->role_id;
-    
-            User::where('id', $id)->update($validatedData);
+        $validatedData = $request->validate([
+            'name'      => 'required',
+            'nip'       => 'required',
+            'email'     => 'required',
+            'foto'      => 'image|file|max:2160',
+        ]);
+
+        if (!$request->foto) {
+            $validatedData['foto'] = $request->oldFoto;
         }
+
+        if($request->file('foto')){
+            $validatedData['foto'] = $request->file('foto')->store('');
+        }
+
+        if (!$request->password) {
+            $validatedData['password'] = $request->oldPassword;
+        }
+
+        $validatedData['role_id'] = auth()->user()->role_id;
+
+        User::where('id', $id)->update($validatedData);
+        
         
 
         return back()->with('success', 'Data anda berhasil diubah');

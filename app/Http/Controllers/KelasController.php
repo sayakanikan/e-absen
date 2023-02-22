@@ -21,7 +21,7 @@ class KelasController extends Controller
     public function create(){
         return view('content/kelas/create', [
             'title' => 'Tambah Kelas',
-            'foto'  => auth()->user()->foto,
+            // 'foto'  => auth()->user()->foto,
         ]);
     }
 
@@ -54,7 +54,7 @@ class KelasController extends Controller
         return view('content/kelas/edit', [
             'title' => 'Update Ruang Kelas',
             'kelas' => $kelas,
-            'foto'  => auth()->user()->foto,
+            // 'foto'  => auth()->user()->foto,
         ]);
     }
 
@@ -84,7 +84,7 @@ class KelasController extends Controller
             'ruang'     => $kelas,
             'title'     => 'Ruang Kelas',
             'tgl'       => date('l, d F Y'),
-            'foto'      => auth()->user()->foto,
+            // 'foto'      => auth()->user()->foto,
         ]);
     }
 }
