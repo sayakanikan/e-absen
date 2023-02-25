@@ -9,6 +9,7 @@ use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WaliKelasController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\SuperAdminAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,10 @@ Route::middleware(['guest'])->group(function () {
     //login-admin
     Route::get('admin/login', [AdminAuthController::class, 'getLogin'])->name('admin.login');
     Route::post('/postlogin', [AdminAuthController::class,'postLogin']);
+
+    //login-superadmin
+    Route::get('superadmin/login', [SuperAdminAuthController::class, 'getLogin'])->name('superadmin.login');
+    Route::post('/postSAlogin', [SuperAdminAuthController::class,'postLogin']);
 
     // Forget Password
     Route::get('/forgotpassword', [AuthController::class, 'forgot'])->name('password.request');

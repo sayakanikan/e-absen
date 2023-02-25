@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Absen;
 use App\Models\Admin;
+use App\Models\SuperAdmin;
 use App\Models\Kelas;
 use App\Models\Qr;
 use App\Models\User;
@@ -39,6 +40,20 @@ class DashboardController extends Controller
             ->leftJoin('kelas', function($join){
                 $join->on('kelas.id', '=', 'users.kelas_id');
             })->pluck('kelas')->first();
+        }elseif(auth()->guard('superadmin')->check()){
+            $superadmin_id = auth()->guard('superadmin')->user()->superadmin_id;
+            $query = Absen::all();
+            $tittle = 'Dashboard superadmin';
+            $jmlmurid = User::all()->count();
+            $jmlkelas = Kelas::all()->count();
+            $jmlwalikelas = Admin::all()->count();
+            $jmlbarcode = Qr::all()->count();
+            $kelas = 'Superadmin';
+            // SuperAdmin::select('kelas')
+            // ->groupBy('kelas')
+            // ->leftJoin('kelas', function($join){
+            //     $join->on('kelas.id', '=', 'superadmins.kelas_id');
+            // })->pluck('kelas')->first();
         }
 
         if (date('n') >= 1 && date('n') <= 6) {

@@ -53,7 +53,7 @@
                           <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" href="/login">Siswa</a>
                         </div>
                         <div class="col-6 p-2">
-                          <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" href="/login">Wali Kelas</a>
+                          <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" href="superadmin/login">Wali Kelas</a>
                         </div>
                       </div>
                     </div>
