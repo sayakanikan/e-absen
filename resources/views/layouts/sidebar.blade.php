@@ -58,24 +58,18 @@
         <span class="menu-title">Laporan</span>
       </a>
     </li>
-        
+    
+    {{-- Riwayat Absen --}}
     @elseif(auth()->guard('web')->check())
-    <li class="nav-item {{ Request::is('absen*') ? 'active' : '' }}">
-      <a class="nav-link " href="/absen">
-        <i class="icon-paper menu-icon mb-1"></i>
-        <span class="menu-title">Absen</span>
-      </a>
-    </li>
-    <li class="nav-item {{ Request::is('riwayat') ? 'active' : '' }}">
-      <a class="nav-link " href="/riwayat">
-        <i class="icon-paper menu-icon mb-1"></i>
-        <span class="menu-title">Riwayat Absen</span>
-      </a>
-    </li>
-        
+      <li class="nav-item {{ Request::is('riwayat') ? 'active' : '' }}">
+        <a class="nav-link " href="/riwayat">
+          <i class="icon-paper menu-icon mb-1"></i>
+          <span class="menu-title">Riwayat Absen</span>
+        </a>
+      </li>
     @endif
     
-    {{-- <hr style="border: 1px solid #8e9aba; width:100%;"> --}}
+    {{-- Pengaturan Akun --}}
     <li class="nav-item {{ Request::is('akun') ? 'active' : '' }}">
       <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
         <i class="icon-grid-2 menu-icon ti-settings mb-1"></i>

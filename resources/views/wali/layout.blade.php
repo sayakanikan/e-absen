@@ -44,19 +44,13 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                    <div class="container">
                       <div class="row">
-                        <div class="col-3 p-2">
-                          <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" href="admin/login" style="position: relative; left: -4px;">Admin</a>
-                        </div>
-                        <div class="col-3 p-2">
-                          <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" href="/login">Siswa</a>
-                        </div>
-                        <div class="col-6 p-2">
-                          <a class="btn btn-sm btn-primary ml-3 my-auto font-weight-bold" href="superadmin/login">Wali Kelas</a>
+                        <div class="col-md-12 d-flex justify-content-between">
+                          <a class="btn btn-sm btn-primary px-4 my-auto font-weight-bold" href="admin/login">Guru</a>
+                          <a class="btn btn-sm btn-primary px-4 my-auto font-weight-bold" href="/login">Siswa</a>
+                          <a class="btn btn-sm btn-primary px-4 my-auto font-weight-bold" href="superadmin/login">TU</a>
                         </div>
                       </div>
-                    </div>
                     </div>
                   </div>
                 </div>
@@ -85,7 +79,6 @@
               <ul>
                 <li><a href="/" class="text-decoration-none">Beranda</a></li>
                 <li><a href="/wali" class="text-decoration-none">Wali Murid</a></li>
-                <li><a href="/login" class="text-decoration-none">Siswa/Guru</a></li>
               </ul>
             </div>
             <div class="col-3">

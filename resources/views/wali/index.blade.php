@@ -9,8 +9,8 @@
       <div class="container align-items-center my-auto">
         <h1 class="mb-3 font-weight-bold text-white">Permudah absensi <br> dengan E-Absen</h1>
         <h4 class="mb-3 font-weight-normal text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. A, rem.</h4>
-        <a class="btn btn-dark font-weight-bold" href="#!" role="button">Siswa/Guru</a>
-        <a class="btn btn-light font-weight-bold" href="#!" role="button">Wali Murid</a>
+        <button type="button" class="btn btn-dark font-weight-bold" data-toggle="modal" data-target=".bd-example-modal-lg">Siswa/Guru/TU</button>
+        <a class="btn btn-light font-weight-bold" href="/wali" role="button">Wali Murid</a>
       </div>
     </div>
     {{-- End of Jumbotron --}}
@@ -29,4 +29,5 @@
     </div>
   </div>
   {{-- End of Section 1 --}}
+  
 @endsection

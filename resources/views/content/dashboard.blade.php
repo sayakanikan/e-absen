@@ -8,7 +8,7 @@
         @if(auth()->guard('admin')->check())
           <h3 class="font-weight-bold">Hai,  {{ auth()->guard('admin')->user()->name }} !</h3>
         @elseif(auth()->guard('web')->check())
-          <h3 class="font-weight-bold">Hai,  {{ auth()->guard('admin')->user()->name }} !</h3>
+          <h3 class="font-weight-bold">Hai,  {{ auth()->guard('web')->user()->name }} !</h3>
         @endif
           <div class="d-flex">
             <h6 class="font-weight-normal mb-0 mr-1">Selamat datang di aplikasi <span class="text-primary font-weight-bold">E-Absen</span>.</h6>
@@ -31,6 +31,7 @@
       </div>
     </div>
   </div>
+  @if (auth()->guard('admin')->check())
   {{-- Highlight Data untuk super Admin --}}
     <div class="row">
       <div class="col-md-6 grid-margin transparent">
@@ -71,6 +72,7 @@
         </div>
       </div>
     </div>
+  @endif
   {{-- Dashboard untuk Role Siswa --}}
     <div class="row">
       <div class="col-md-6 grid-margin stretch-card">
